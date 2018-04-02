@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title> {{ currentCityInfos?.nom }} </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div #map id="map">
+    </div>
+    <ion-item>
+      Nombre de département {{ currentCityInfos?.codesPostaux.length }}
+    </ion-item>
+    <div *ngIf="currentCityInfos?.codesPostaux.length < 6">
+      <ion-item>
+        <div>
+          nom: {{ currentCityInfos?.departement?.nom }}
+        </div>
+        <div>
+          Département du : {{ currentCityInfos?.departement?.code }}
+        </div>
+      </ion-item>
+    </div>
+    <ion-item>
+      Population {{ currentCityInfos?.population }}
+    </ion-item>
+  </ion-list>
+</ion-content>

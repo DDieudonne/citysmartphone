@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-searchbar placeholder="Rechercher une ville...française" animated debounce="1000" [(ngModel)]="citySearch" (ionInput)="onInput($event)"
+        (ionCancel)="onCancel($event)">
+      </ion-searchbar>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card>
+      <ion-item-group>
+        <ion-item *ngFor="let city of cityNameBox" (click)="selectedCity(city)">
+          {{ city?.nom }} {{ city?.population }} (en milliers)
+        </ion-item>
+        <ion-item *ngIf="cityNameBox.length == 0">
+          <ion-icon name="map"></ion-icon>
+          <span>Aucune ville recherchée...</span>
+        </ion-item>
+      </ion-item-group>
+    </ion-card>
+  </ion-content>

@@ -5,26 +5,36 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { SearchcityProvider } from '../providers/searchcity/searchcity';
+import { HttpModule } from '@angular/http';
+
+import { CurrentCityPageModule } from '../pages/current-city/current-city.module';
+import { StartPageModule } from '../pages/start/start.module';
+import { CityPageModule } from '../pages/city/city.module';
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage
+    MyApp
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp, {
+      backButtonText: 'retour'
+    }),
+    StartPageModule,
+    CurrentCityPageModule,
+    CityPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage
+    MyApp
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    SearchcityProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }
